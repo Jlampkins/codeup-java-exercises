@@ -1,19 +1,65 @@
 import java.util.Scanner;
-
-
 public class HelloWorld {
     public static void main(String[] args) {
 
+        int num = 10;
+        String word = "Here we go";
+        System.out.println(num + word);
+
+//        String message = "Hello World";
+////        System.out.print(HelloWorld.reverse(message));
+////        String.reverse(message);
+//
+////        String method(){
+////
+////        };
+////
+////        String substring(int startsAt){
+////
+////        };
+////
+////        String toUpperCase() {
+////
+////        };
+//
+//        public static String reverse(String original){
+//            return "Reverse of Original";
+//
+//        }
+//
+////        public static String sayHello(String name) {
+////            return String.format("Hello, %s!", name);
+////        }
+//
+//
+//        Student cory = new Student("Cory");
+//        System.out.println(cory.name);
+//        Student bethany = new Student("Bethany");
+//        System.out.println(Student.studentCount);
+//
+//        class Student {
+//            static int studentCount = 0;
+//            String name;
+//            Student(String name){
+//                studentCount++;
+//                this.name = name;
+//                //set up a student
+//            }
+//        }
+
+
+
+
         // A && B = TRUE if A = TRUE and B = TRUE
-        // A || B = TRUE if A = TRUE or B = TRU
+        // A || B = TRUE if A = TRUE or B = TRue
 
-        boolean boo1 = true;
-        boolean boo2 = false;
-        System.out.println(boo1);
-        System.out.println(boo2);
-
-        System.out.println((((boo1 && boo2) && boo1) || (boo2 || boo1)) && ((boo2 && boo1) && (boo1 && boo2 && boo2 || boo1 && boo2)));
-        System.out.println(((boo1 && boo2) || (boo1 && boo2)) || ((boo1 && boo2) || boo1 || boo2));
+//        boolean boo1 = true;
+//        boolean boo2 = false;
+//        System.out.println(boo1);
+//        System.out.println(boo2);
+//
+//        System.out.println((((boo1 && boo2) && boo1) || (boo2 || boo1)) && ((boo2 && boo1) && (boo1 && boo2 && boo2 || boo1 && boo2)));
+//        System.out.println(((boo1 && boo2) || (boo1 && boo2)) || ((boo1 && boo2) || boo1 || boo2));
 
 
 //        Scanner scanner = new Scanner(System.in);
