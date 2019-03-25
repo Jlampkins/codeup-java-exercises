@@ -6,7 +6,9 @@ public class HeroRPG {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean gameinPlay = true;
+        boolean market = true;
         boolean fightinPlay = true;
+        boolean redoHero = true;
         boolean shopping = true;
         boolean warrior = false;
         boolean mage = false;
@@ -26,16 +28,13 @@ public class HeroRPG {
 
 
         do {
-            System.out.println("Hello, hero!  Welcome to Arcadia.  What do I have the pleasure of calling you?");
-            String heroName = scanner.nextLine();
-            System.out.println("hmm.. " + heroName + ". That is an interesting name, but what is a name after all?");
-            System.out.println("Anyway, Arcadia can use all the heroes it can find!");
-//            System.out.println("We are in need of a brave hero to take on a monster within the town.  Can we count on you?");
-//            String calltoBattle = scanner.next();
-//            if (calltoBattle.startsWith("y") || calltoBattle.startsWith("Y")) {
-//                System.out.println("Great!  You may not have much muscle, but you definitely make up for it with heart.");
-                System.out.println("To get started how strong do you think you are? The Strongest|Pretty Strong|Not Strong");
-//                scanner.nextLine();
+            do{
+                System.out.println("Hello, hero!  Welcome to Arcadia.  What do I have the pleasure of calling you?");
+                String heroName = scanner.nextLine();
+                System.out.println("hmm.. " + heroName + ". That is an interesting name, but what is a name after all?");
+                System.out.println("Anyway, Arcadia can use all the heroes it can find!  We need a brave hero to take on the monsters around the town!");
+                    System.out.println("I hope we can count on you!");
+                System.out.println("To get started how strong do you think you are? The Strongest|Pretty Strong|Not Strong (difficulty level)");
                 String heroStrength = scanner.nextLine();
 /** Hero Health **/
                 if (heroStrength.equalsIgnoreCase("The Strongest")) {
@@ -43,11 +42,12 @@ public class HeroRPG {
                 } else if (heroStrength.equalsIgnoreCase("Pretty Strong")) {
                     heroHealth = mediumHealth;
                 } else if (heroStrength.equals("Not Strong")) {
+                    //hero health set to standard 20
                 }
                 System.out.println("Excellent! Now, let's get you properly equipped.  What is your preferred study of the arts?  Warrior or Mage?");
                 String heroSpec = scanner.nextLine();
 /** Warrior Spec **/
-                if(heroSpec.startsWith("W") || heroSpec.startsWith("w")){
+                if (heroSpec.startsWith("W") || heroSpec.startsWith("w")) {
                     System.out.println("Ah.  A warrior.  I should have known from your huge battle axe.  Let's get you something a little nicer though.");
                     System.out.println("** " + heroName + " has received the Hero's Axe **");
                     System.out.println("** Attack has increased from " + heroAttack + " to 5");
@@ -58,8 +58,8 @@ public class HeroRPG {
                     heroPotion = heroPotion + 2;
                     heroHealth = heroHealth + 5;
 /** Mage Spec **/
-                }else if (heroSpec.startsWith("M") || heroSpec.startsWith("m")){
-//                    System.out.println(heroAttack);
+                }else if (heroSpec.startsWith("M") || heroSpec.startsWith("m")) {
+    //                    System.out.println(heroAttack);
                     System.out.println("Ah of course.  Who doesn't love a good spell?  You need a good staff to go with your spells though.");
                     System.out.println("** " + heroName + " has received the Hero's Staff **");
                     System.out.println("** Attack has increased from " + heroAttack + " to 3");
@@ -88,12 +88,11 @@ public class HeroRPG {
                 System.out.println("Are you ready to continue?");
                 System.out.println("CONTINUE *** START OVER");
                 String leaveArea = scanner.nextLine();
-                if(leaveArea.startsWith("C") || leaveArea.equalsIgnoreCase("Continue")){
+                if (leaveArea.startsWith("C") || leaveArea.equalsIgnoreCase("Continue")) {
                     System.out.println("*** " + heroName + " has left the castle of Arcadia and is now in the Market Square. ***");
-
-
-                    System.out.println("*** There are a number of shops here, however, there are three that catch your eye. ***");
-                    System.out.println("*** Potion Shop, Weapon Shop, and the Inn.  Where would you like to go? ***");
+                    do {
+                        System.out.println("*** There are a number of shops here, however, there are three that catch your eye. ***");
+                        System.out.println("*** Potion Shop, Weapon Shop, and the Inn.  Where would you like to go? ***");
 
 /** Potion Shop **/
                         String heroChoice = scanner.nextLine();
@@ -128,7 +127,7 @@ public class HeroRPG {
                                         } else if (goldPoint < 6) {
                                             System.out.println("It looks as though you don't have enough money. I have kids to feed!");
                                         }
-                                    }else if(potionBuy.startsWith("N") || potionBuy.equalsIgnoreCase("nevermind")){
+                                    } else if (potionBuy.startsWith("N") || potionBuy.equalsIgnoreCase("nevermind")) {
                                         System.out.println("Aw! Maybe next time");
                                         shopping = false;
                                     }
@@ -137,34 +136,34 @@ public class HeroRPG {
                                     System.out.println("What do you have to sell?");
                                     System.out.println("1 Potion = 2GP ** 3 Potions ** 6GP ** Nevermind");
                                     String potionSell = scanner.nextLine();
-                                    if(potionSell.startsWith("1 Potion") || potionSell.equalsIgnoreCase("1 potion")){
-                                        if(potionCount >= 1){
+                                    if (potionSell.startsWith("1 Potion") || potionSell.equalsIgnoreCase("1 potion")) {
+                                        if (potionCount >= 1) {
                                             goldPoint = goldPoint + 2;
                                             potionCount = potionCount - 1;
                                             System.out.println("Hey thanks!  Here is your money");
                                             System.out.println("** " + heroName + " received 2GP.  You now have a total of: " + goldPoint + " gold coins. **");
-                                        }else if(potionCount < 1){
+                                        } else if (potionCount < 1) {
                                             System.out.println("Hey! What are you trying to pull.  You don't have any potions!");
                                         }
-                                    }else if(potionSell.startsWith("3 Potions") || potionSell.equalsIgnoreCase("3 potions")){
-                                        if (potionCount >= 3){
+                                    } else if (potionSell.startsWith("3 Potions") || potionSell.equalsIgnoreCase("3 potions")) {
+                                        if (potionCount >= 3) {
                                             goldPoint = goldPoint + 6;
                                             potionCount = potionCount - 3;
                                             System.out.println("Hey thanks!  Here is your money");
                                             System.out.println("** " + heroName + " received 2GP.  You now have a total of " + goldPoint + " gold coins. **");
                                         }
-                                    }else if(potionSell.startsWith("N") || potionSell.equalsIgnoreCase("nevermind")){
+                                    } else if (potionSell.startsWith("N") || potionSell.equalsIgnoreCase("nevermind")) {
                                         System.out.println("Aw! Maybe next time");
                                         shopping = false;
                                     }
 
                                 } else if (potionChoice.startsWith("Leave") || potionChoice.equalsIgnoreCase("leave")) {
-                                    shopping = false;
+                                    market = false;
                                 }
-                            }while(shopping);
+                            } while (market);
 /** end of Pot Shop Options **/
 /** start of Weapon Shop **/
-                        } else if(heroChoice.startsWith("Weapon Shop") || heroChoice.equalsIgnoreCase("weapon shop")){
+                        } else if (heroChoice.startsWith("Weapon Shop") || heroChoice.equalsIgnoreCase("weapon shop")) {
                             System.out.println("Welcome to the Weapon Shop!");
                             System.out.println("We have plenty of things you can use for stabbing.");
                             do {
@@ -176,7 +175,7 @@ public class HeroRPG {
                                     System.out.println("Double Sided Battle Axe = 15GP (+5 Attack) *** Magical Magic Stick of Magic = 15GP (+3 Attack & +5 Health) ** Nevermind");
                                     String weaponBuy = scanner.nextLine();
                                     if (weaponBuy.startsWith("Double Sided Battle Axe") || weaponBuy.equalsIgnoreCase("double sided battle axe")) {
-                                        if (goldPoint >= 15 && warrior){
+                                        if (goldPoint >= 15 && warrior) {
                                             heroAttack = heroAttack + 5;
                                             goldPoint = goldPoint - 15;
                                             System.out.println("Great! Here you are.  Careful with that!  Make sure to put out plenty of eyes.");
@@ -184,8 +183,8 @@ public class HeroRPG {
                                         } else if (goldPoint < 15 || !warrior) {
                                             System.out.println("I'm afraid you are unable to handle this weapon.");
                                         }
-                                    }else if (weaponBuy.startsWith("Magical Magic Stick of Magic") || weaponBuy.equalsIgnoreCase("magical magic stick of magic")) {
-                                        if (goldPoint >= 15 && mage){
+                                    } else if (weaponBuy.startsWith("Magical Magic Stick of Magic") || weaponBuy.equalsIgnoreCase("magical magic stick of magic")) {
+                                        if (goldPoint >= 15 && mage) {
                                             heroAttack = heroAttack + 3;
                                             heroHealth = heroHealth + 5;
                                             goldPoint = goldPoint - 15;
@@ -194,28 +193,42 @@ public class HeroRPG {
                                         } else if (goldPoint < 15 || !mage) {
                                             System.out.println("I'm afraid you cannot handle this weapon.");
                                         }
-                                    }else if(weaponBuy.startsWith("Nevermind") || weaponBuy.equalsIgnoreCase("nevermind")){
+                                    } else if (weaponBuy.startsWith("Nevermind") || weaponBuy.equalsIgnoreCase("nevermind")) {
                                         shopping = false;
                                     }
 
-                                }else if(weaponChoice.startsWith("Sell") || weaponChoice.equalsIgnoreCase("sell")){
+                                } else if (weaponChoice.startsWith("Sell") || weaponChoice.equalsIgnoreCase("sell")) {
                                     System.out.println("We are currently unable to buy items.  Check back soon!");
 
-                                }else if (weaponChoice.startsWith("Leave") || weaponChoice.equalsIgnoreCase("leave")) {
+                                } else if (weaponChoice.startsWith("Leave") || weaponChoice.equalsIgnoreCase("leave")) {
                                     shopping = false;
                                 }
 
-                            } while(shopping);
+                            } while (market);
 /** end of weapon shop **/
+                        } else if (heroChoice.startsWith("I") || heroChoice.equalsIgnoreCase("INN")) {
+                            System.out.println("Hello wary traveler!  Welcome to the Inn!");
+                            System.out.println("There is nothing here yet. Sorry!");
+                            do {
+                                System.out.println("What can we do for you?");
+                                System.out.println("REST ** LEAVE");
+                                String innChoice = scanner.nextLine();
+                                if (innChoice.startsWith("R") || innChoice.equalsIgnoreCase("REST")) {
+                                    System.out.println("Come and lay down.  A hero like you needs all the rest they can get.  Do not worry about payment.");
+                                    heroHealth = 20;
+                                    System.out.println("ZZZ");
+                                    System.out.println("ZZZZZZZZ");
+                                    System.out.println("** " + heroName + "'s health is now at " + heroHealth);
+                                    shopping = false;
+                                } else if (innChoice.startsWith("L") || innChoice.equalsIgnoreCase("LEAVE")) {
+                                    market = false;
+                                }
+                            } while (shopping);
 
 
+                        } /**end of INN Options **/
+                    }while(market);
 
-
-                        }
-
-                } else if(leaveArea.startsWith("S") || leaveArea.equalsIgnoreCase("Start Over")){
-                    gameinPlay = false;
-                }
 //                else{
 //                    System.out.println("What would you like to do?");
 //                    System.out.println("Hero Stats ** Inventory ** Continue");
@@ -237,7 +250,7 @@ public class HeroRPG {
                     System.out.println("** Attack ** ** Potion **");
                     String battleChoice = scanner.nextLine();
                     if (battleChoice.equalsIgnoreCase("Attack") || battleChoice.startsWith("a")) {
-                        int randomNum = (int)(Math.random() * 6);
+                        int randomNum = (int) (Math.random() * 6);
 /** attacking the enemy **/
 //                        System.out.println(randomNum);
                         if (randomNum == 0 || randomNum == 2 || randomNum == 3 || randomNum == 5) {
@@ -255,16 +268,16 @@ public class HeroRPG {
                         }
 
                     } else if (battleChoice.equalsIgnoreCase("Potion")) {
-                        if(heroHealth < 20 && potionCount > 0) {
+                        if (heroHealth < 20 && potionCount > 0) {
                             potionCount = potionCount - 1;
                             heroHealth = heroHealth + heroPotion;
                             System.out.println(heroName + " drank a health potion. Health has increased by " + heroPotion + ". Health is now at " + heroHealth);
                             System.out.println("You now have " + potionCount + " left.");
                             System.out.println("The enemies health is at " + enemyHealth);
-                        }else if (heroHealth == 100) {
+                        } else if (heroHealth == 100) {
                             System.out.println("You may want to slow down on those potions, you are already at " + heroHealth + " health.");
                             System.out.println("The enemies health is at " + enemyHealth);
-                        }else if(potionCount == 0){
+                        } else if (potionCount == 0) {
                             System.out.println("You are out of potions!");
                             System.out.println("The enemies health is at " + enemyHealth);
                         }
@@ -273,19 +286,19 @@ public class HeroRPG {
 /** enemy attack **/
                     if (enemyHealth <= 0) {
                         System.out.println("Enemy has been defeated!");
-                        int randomNum = (int)(Math.random() * 6);
-                            if(randomNum == 1 || randomNum == 3){
-                                System.out.println("** Enemy has dropped 3 Gold **");
-                                goldPoint = goldPoint + 2;
-                            }else if(randomNum == 2 || randomNum == 4){
-                                System.out.println("** Enemy has dropped 5 Gold **");
-                                goldPoint = goldPoint + 5;
-                            }else if(randomNum == 0){
-                                System.out.println("** Enemy has dropped NEW ITEM **");
-                            }
+                        int randomNum = (int) (Math.random() * 6);
+                        if (randomNum == 1 || randomNum == 3) {
+                            System.out.println("** Enemy has dropped 3 Gold **");
+                            goldPoint = goldPoint + 2;
+                        } else if (randomNum == 2 || randomNum == 4) {
+                            System.out.println("** Enemy has dropped 5 Gold **");
+                            goldPoint = goldPoint + 5;
+                        } else if (randomNum == 0) {
+                            System.out.println("** Enemy has dropped NEW ITEM **");
+                        }
                         fightinPlay = false;
-                    }else {
-                        int randomNum = (int)(Math.random() * 6);
+                    } else {
+                        int randomNum = (int) (Math.random() * 6);
 //                        System.out.println(randomNum);
                         System.out.println();
                         if (randomNum == 0 || randomNum == 2 || randomNum == 3 || randomNum == 5) {
@@ -308,23 +321,21 @@ public class HeroRPG {
                         }
                     }
 
-                }while(fightinPlay);
-
-
-
-
-
-
+                } while (fightinPlay);
 
 
 //            } /** Do you want to play if statement **/
-
+//
 //                else {
 //                System.out.println("I should have known.  Not many are willing to risk their lives for adventure.  Maybe next time!");
 //                gameinPlay = false;
 //            }
+            } else if (leaveArea.startsWith("S") || leaveArea.equalsIgnoreCase("Start Over")) {
+                redoHero = false;
+            }
+        }while(redoHero);
 
-        }while (gameinPlay);
+    }while (gameinPlay);
 
 
 
