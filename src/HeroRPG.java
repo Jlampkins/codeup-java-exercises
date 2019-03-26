@@ -5,9 +5,7 @@ import java.util.Random;
 public class HeroRPG {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        boolean gameinPlay = true;
         boolean market = true;
-        boolean dead = false;
         boolean leaveTown = true;
         boolean fightinPlay = true;
         boolean redoHero = true;
@@ -20,16 +18,12 @@ public class HeroRPG {
         long mediumHealth = 15;
         long hardHealth = 10;
         long heroAttack = 2;
-        long warriorAttack = 5;
-        long mageAttack = 3;
         long heroPotion = 2;
-        long warriorPotion = 4;
-        long magePotion = 7;
         int potionCount = 3;
         int goldPoint = 100;
 
 
-//        do {
+
         do{
             System.out.println("Hello, hero!  Welcome to Arcadia.  What do I have the pleasure of calling you?");
             String heroName = scanner.nextLine();
@@ -192,7 +186,9 @@ public class HeroRPG {
                                         heroHealth = heroHealth + 5;
                                         goldPoint = goldPoint - 15;
                                         System.out.println("Great! Here you are.  Careful with that!  Make sure to put out plenty of eyes.");
-                                        System.out.println("** " + heroName + " now has a Magical Magic Stick of Magic.  Attack Damage is now: " + heroAttack + "You have a total of " + goldPoint + " gold coins. **");
+                                        System.out.println("** " + heroName + " received the Magical Magic Stick of Magic. **");
+                                        System.out.println("** Attack Damage is now: " + heroAttack + ". You have a total of " + goldPoint + " gold coins. **");
+                                        System.out.println("** " + heroName + "'s health is now at " + heroHealth + " **");
                                     } else if (goldPoint < 15 || !mage) {
                                         System.out.println("I'm afraid you cannot handle this weapon.");
                                     }
@@ -323,7 +319,7 @@ public class HeroRPG {
                         if (heroHealth <= 0) {
                             System.out.println(heroName + " has been defeated!");
                             System.out.println("GAME OVER");
-                            dead = true;
+//                            dead = true;
                             fightinPlay = false;
 
                         }
@@ -344,10 +340,12 @@ public class HeroRPG {
     }while(redoHero);
 
 
-//    }while (gameinPlay);
 
 
 
 
-    }
+
+    } /** THIS IS THE MAIN **/
+
+
 }
