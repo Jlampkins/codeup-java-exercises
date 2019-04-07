@@ -21,5 +21,6 @@ class Manager extends Employee {
     public static void main(String[] args) {
         Employee james = new Developer("James", "codeup");
         System.out.println(james.work());
+
     }
 }

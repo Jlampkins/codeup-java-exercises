@@ -51,6 +51,8 @@ public class MoviesApplication {
         }
         else if(selection.startsWith("0") || selection.startsWith("e") || selection.startsWith("E")){
 
+        }else {
+            searchMovie();
         }
     }
     private static void searchAll(){
